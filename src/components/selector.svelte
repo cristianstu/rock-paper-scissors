@@ -1,7 +1,4 @@
 <script>
-  import iconRock from '../images/icon-rock.svg';
-  import iconPaper from '../images/icon-paper.svg';
-  import iconScissors from '../images/icon-scissors.svg';
   import bgtriangle from '../images/bg-triangle.svg';
 	import Item from './item.svelte';
 

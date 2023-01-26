@@ -1,8 +1,14 @@
 <script>
-	import Board from "./board.svelte";
+	import Selector from "./selector.svelte";
 
   export let mode = 'normal';
+
   let title = 'Rock Paper Scissors';
+  let score = 0;
+
+  if (mode !== 'normal') {
+    title += ' Lizard Spock';
+  }
 </script>
 
 <main>
@@ -16,12 +22,12 @@
 
     <section class="score">
       <h3>score</h3>
-      12
+      {score}
     </section>
 
   </header>
 
-  <Board />
+  <Selector />
 </main>
 
 <style>
@@ -58,7 +64,7 @@
     padding: 1rem;
   }
 
-  section.score {
+  section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +76,7 @@
     font-size: 3rem;
   }
 
-  section.score h3 {
+  section h3 {
     color: hsl(229, 64%, 46%);
     font-size: 1rem;
     margin: 0;
