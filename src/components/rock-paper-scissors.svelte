@@ -5,13 +5,32 @@
   let title = 'Rock Paper Scissors';
 </script>
 
+<main>
+  <header>
+    <h1>
+      {#each title.split(' ') as word}
+        <span>{word}</span>
+        <br />
+      {/each}
+    </h1>
+
+    <section class="score">
+      <h3>score</h3>
+      12
+    </section>
+
+  </header>
+
+  <Board />
+</main>
+
 <style>
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    padding: 3rem 2rem;
   }
 
   header {
@@ -23,6 +42,13 @@
     text-transform: uppercase;
     border-radius: 15px;
     min-width: 700px;
+
+  }
+
+  @media screen and (max-width: 800px) {
+    header {
+      min-width: 100%;
+    }
   }
 
   header h1 {
@@ -51,22 +77,3 @@
     padding: 0 2rem;
   }
 </style>
-
-<main>
-  <header>
-    <h1>
-      {#each title.split(' ') as word}
-        <span>{word}</span>
-        <br />
-      {/each}
-    </h1>
-
-    <section class="score">
-      <h3>score</h3>
-      12
-    </section>
-
-  </header>
-
-  <Board />
-</main>

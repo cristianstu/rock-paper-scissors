@@ -1,7 +1,7 @@
 <style>
   :global(body) {
     font-size: 16px;
-    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background: radial-gradient(circle farthest-corner at top center, hsl(214, 47%, 23%) 0%, hsl(237, 49%, 15%) 80%);
     height: 100vh;
     color: white;
     margin: 0;
