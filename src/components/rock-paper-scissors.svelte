@@ -18,6 +18,8 @@
   <Header title={title} score={score} />
 
   <Selector />
+
+  <Selected player1Choice={Item.PAPER} />
 </main>
 
 <style>
