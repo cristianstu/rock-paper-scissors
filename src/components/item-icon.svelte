@@ -6,6 +6,7 @@
 
   export let type: Item;
   export let selectable = true;
+  export let size: 'medium' | 'big' = 'medium';
 
   const gradientColors = {
     [Item.PAPER]: { bs: 'hsl(230deg 59% 46%)', bg: 'linear-gradient(0deg, hsl(230, 89%, 62%) 0%, hsl(230, 89%, 65%) 100%)' },
@@ -14,9 +15,15 @@
   }
 
   const icon = type === Item.ROCK ? iconRock : type === Item.PAPER ? iconPaper : iconScissors;
+
+  const extRadius = size === 'big' ? '265px' : '200px';
 </script>
 
-<article class={type} class:selectable={selectable}>
+<article
+  class={type}
+  class:selectable={selectable}
+  style="--ext-radius: {extRadius}"
+>
   <div class="circle-out" style="--bs-color: {gradientColors[type].bs}; --bg-color: {gradientColors[type].bg}">
     <div class="circle-in">
       <img src={icon} alt={type}>
@@ -28,7 +35,6 @@
   .circle-out {
     display: flex;
     border-radius: 50%;
-    background: red;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -40,8 +46,8 @@
     display: flex;
     border-radius: 50%;
     background: white;
-    width: 155px;
-    height: 155px;
+    width: calc(var(--ext-radius) * 0.775);
+    height: calc(var(--ext-radius) * 0.775);
     justify-content: center;
     align-items: center;
     box-shadow: 0px 8px 0px 0px rgb(215 213 213) inset;
@@ -60,8 +66,8 @@
     z-index: 1;
     cursor: pointer;
     transition: all .2s ease-in-out;
-    width: 200px;
-    height: 200px;
+    width: var(--ext-radius);
+    height: var(--ext-radius);
     justify-self: center;
     align-self: center;
   }

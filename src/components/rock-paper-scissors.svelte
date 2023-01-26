@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { Item } from "../models";
 	import Header from "./header.svelte";
+	import Selected from "./selected.svelte";
 	import Selector from "./selector.svelte";
 
   export let mode = 'normal';
