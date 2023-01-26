@@ -1,13 +1,14 @@
 <script>
   import bgtriangle from '../images/bg-triangle.svg';
-	import Item from './item.svelte';
+	import { Item } from '../models';
+	import ItemIcon from './item-icon.svelte';
 
 </script>
 
 <section>
-  <Item type="paper" />
-  <Item type="scissors" />
-  <Item type="rock" />
+  <ItemIcon type={Item.PAPER} />
+  <ItemIcon type={Item.SCISSORS} />
+  <ItemIcon type={Item.ROCK} />
 
   <article class="triangle">
     <img src={bgtriangle} alt="triangle">
