@@ -5,6 +5,7 @@
   import iconScissors from '../images/icon-scissors.svg';
 
   export let type: Item;
+  export let selectable = true;
 
   const gradientColors = {
     [Item.PAPER]: { bs: 'hsl(230deg 59% 46%)', bg: 'linear-gradient(0deg, hsl(230, 89%, 62%) 0%, hsl(230, 89%, 65%) 100%)' },
@@ -15,7 +16,7 @@
   const icon = type === Item.ROCK ? iconRock : type === Item.PAPER ? iconPaper : iconScissors;
 </script>
 
-<article class={type}>
+<article class={type} class:selectable={selectable}>
   <div class="circle-out" style="--bs-color: {gradientColors[type].bs}; --bg-color: {gradientColors[type].bg}">
     <div class="circle-in">
       <img src={icon} alt={type}>
@@ -65,7 +66,7 @@
     align-self: center;
   }
 
-  article:hover {
+  article.selectable:hover {
     transform: scale(1.1);
   }
 
