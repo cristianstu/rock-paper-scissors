@@ -23,8 +23,8 @@
 
   <div class="separator">
     <h3>&nbsp;</h3>
-    {#if showResult}
-      <div class="result" in:fade={{ delay: 300, duration: 200 }}>
+    <div class="result" in:fade={{ delay: 300, duration: 200 }}>
+      {#if showResult}
         {#if winner === player1Choice}
           <h2>You win</h2>
         {:else if winner === player2Choice}
@@ -33,10 +33,10 @@
           <h2>It's a tie!</h2>
         {/if}
         <button on:click={onPlayAgain}>Play again  </button>
-      </div>
-    {:else if !showResult && (!player1Choice || !player2Choice)}
-      <WaitForOponent />
-    {/if}
+      {:else if !showResult && (!player1Choice || !player2Choice)}
+        <WaitForOponent />
+      {/if}
+    </div>
   </div>
 
   <UserSelection title="The house picked" playerChoice={player2Choice} />
