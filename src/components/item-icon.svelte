@@ -58,6 +58,12 @@
     object-fit: contain;
   }
 
+  @media screen and (max-width: 700px) {
+    a {
+      --ext-radius: 160px !important;
+    }
+  }
+
   a {
     place-content: center;
     display: flex;
@@ -69,6 +75,7 @@
     height: var(--ext-radius);
     justify-self: center;
     align-self: center;
+
   }
 
   a:not(.selectable) {
