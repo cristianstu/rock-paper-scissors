@@ -44,11 +44,28 @@
 
 <style>
   section {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     padding: 1rem;
     justify-content: center;
+    justify-items: center;
     gap: 3rem;
     margin-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    section {
+      grid-template-columns: repeat(2, 1fr);;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+      padding: 0;
+      margin-top: 3rem;
+    }
+
+    .separator {
+      grid-column: 1 / 3;
+      grid-row: 2;
+    }
   }
 
   .separator {

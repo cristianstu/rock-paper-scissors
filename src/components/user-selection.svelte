@@ -25,6 +25,23 @@
     min-width: 270px;
   }
 
+  .placeholder {
+    border-radius: 50%;
+    width: 265px;
+    height: 265px;
+    background: rgb(255 255 255 / 5%);
+  }
+
+  @media (max-width: 700px) {
+    article {
+      min-width: 200px;
+    }
+    .placeholder {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
   h3 {
     text-align: center;
     text-transform: uppercase;
@@ -36,12 +53,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .placeholder {
-    border-radius: 50%;
-    width: 265px;
-    height: 265px;
-    background: rgb(255 255 255 / 5%);
   }
 </style>

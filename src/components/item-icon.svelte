@@ -32,6 +32,12 @@
 </a>
 
 <style>
+  @media screen and (max-width: 700px) {
+    a {
+      --ext-radius: 160px !important;
+    }
+  }
+
   .circle-out {
     display: flex;
     border-radius: 50%;
@@ -56,12 +62,6 @@
   a img {
     width: 65px;
     object-fit: contain;
-  }
-
-  @media screen and (max-width: 700px) {
-    a {
-      --ext-radius: 160px !important;
-    }
   }
 
   a {
