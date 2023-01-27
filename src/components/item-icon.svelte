@@ -27,7 +27,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
   on:click
-  transition:scale={{ duration: animate ? 250 : 0 }}
+  in:scale={{ duration: animate ? 250 : 0 }}
   class={type}
   class:selectable={selectable}
   style="--ext-radius: {extRadius}"
