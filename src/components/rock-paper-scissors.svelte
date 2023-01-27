@@ -4,6 +4,7 @@
 	import Header from "./header.svelte";
 	import Selected from "./selected.svelte";
 	import Selector from "./selector.svelte";
+	import { winners } from "../config";
 
   export let mode = 'normal';
 
@@ -11,6 +12,7 @@
   let score = 0;
   let player1Choice: Item | null = null;
   let player2Choice: Item | null = null;
+  let winner: Item | null = null;
 
   if (mode !== 'normal') {
     title += ' Lizard Spock';
@@ -27,6 +29,26 @@
     player1Choice = null;
     player2Choice = null;
   };
+
+  const changeScore = (amount: number) => {
+    setTimeout(() => {
+      score += amount;
+    }, 1000);
+  };
+
+  $: {
+    if (player1Choice && player2Choice) {
+      if (player1Choice === player2Choice) {
+        winner = null;
+      } else if (winners[player1Choice].includes(player2Choice)) {
+        winner = player1Choice;
+        changeScore(1);
+      } else if (winners[player2Choice].includes(player1Choice)) {
+        winner = player2Choice;
+        changeScore(-1);
+      }
+    }
+  }
 </script>
 
 <main>
@@ -35,7 +57,7 @@
   {#if !player1Choice}
     <Selector onSelected={handleSelected} />
   {:else}
-    <Selected {player1Choice} {player2Choice} onPlayAgain={playAgain} />
+    <Selected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
   {/if}
 </main>
 

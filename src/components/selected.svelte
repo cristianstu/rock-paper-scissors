@@ -8,6 +8,7 @@
   export let player1Choice: Item | null = null;
   export let player2Choice: Item | null = null;
   export let onPlayAgain: () => void;
+  export let winner: Item | null = player1Choice;
 
   let showResult = false;
   $: {
@@ -24,7 +25,13 @@
     <h3>&nbsp;</h3>
     {#if showResult}
       <div class="result" in:fade={{ delay: 300, duration: 200 }}>
-        <h2>Result</h2>
+        {#if winner === player1Choice}
+          <h2>You win</h2>
+        {:else if winner === player2Choice}
+          <h2>You lose</h2>
+        {:else}
+          <h2>It's a tie!</h2>
+        {/if}
         <button on:click={onPlayAgain}>Play again  </button>
       </div>
     {:else if !showResult && (!player1Choice || !player2Choice)}
