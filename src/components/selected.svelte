@@ -7,13 +7,20 @@
   export let player1Choice: Item | null = null;
   export let player2Choice: Item | null = null;
   export let onPlayAgain: () => void;
+
+  let showResult = false;
+  $: {
+    if (player1Choice && player2Choice) {
+      setTimeout(() => showResult = true, 500);
+    }
+  }
 </script>
 
 <section in:fade={{ duration: 200 }}>
   <UserSelection title="You picked" playerChoice={player1Choice} />
 
   <div class="separator">
-    {#if player1Choice && player2Choice}
+    {#if showResult}
       <div class="result" in:fade={{ delay: 300, duration: 200 }}>
         <h2>Result</h2>
         <button on:click={onPlayAgain}>Play again  </button>
