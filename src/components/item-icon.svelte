@@ -24,11 +24,10 @@
   const extRadius = size === 'big' ? '265px' : '200px';
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<article
-  on:click
+<a
+  href="/#"
+  on:click|preventDefault
   in:scale={{ duration: animate ? 250 : 0 }}
-  class={type}
   class:selectable={selectable}
   style="--ext-radius: {extRadius}"
 >
@@ -36,11 +35,11 @@
     class="circle-out"
     style="--bs-color: {gradientColors[type].bs}; --bg-color: {gradientColors[type].bg}"
   >
-    <div class="circle-in">"
+    <div class="circle-in">
       <img src={icon} alt={type}>
     </div>
   </div>
-</article>
+</a>
 
 <style>
   .circle-out {
@@ -64,12 +63,12 @@
     box-shadow: 0px 8px 0px 0px rgb(215 213 213) inset;
   }
 
-  article img {
+  a img {
     width: 65px;
     object-fit: contain;
   }
 
-  article {
+  a {
     place-content: center;
     display: flex;
     grid-row: 1 / 3;
@@ -82,27 +81,26 @@
     align-self: center;
   }
 
-  article.selectable {
-    cursor: pointer;
+  a:not(.selectable) {
+    cursor: default;
   }
 
-  article.selectable:hover {
+  a.selectable:hover {
     transform: scale(1.1);
   }
 
-  /* FIXME Do not hardcode this classes*/
-  article.rock {
-    grid-row: 3 / 5;
-    grid-column: 2 / 4;
-  }
-
-  article.paper {
+  a:nth-child(1) {
     grid-row: 1 / 3;
     grid-column: 1 / 3;
   }
 
-  article.scissors {
+  a:nth-child(2) {
     grid-row: 1 / 3;
     grid-column: 3 / 5;
+  }
+
+  a:nth-child(3) {
+    grid-row: 3 / 5;
+    grid-column: 2 / 4;
   }
 </style>
