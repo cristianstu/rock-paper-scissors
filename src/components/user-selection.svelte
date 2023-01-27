@@ -32,7 +32,7 @@
     background: rgb(255 255 255 / 5%);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     article {
       min-width: 200px;
     }

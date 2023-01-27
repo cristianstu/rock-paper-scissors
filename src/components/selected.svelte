@@ -45,7 +45,7 @@
 <style>
   section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr auto 1fr;
     padding: 1rem;
     justify-content: center;
     justify-items: center;
@@ -53,7 +53,7 @@
     margin-top: 2rem;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     section {
       grid-template-columns: repeat(2, 1fr);;
       grid-template-rows: repeat(2, 1fr);
@@ -81,16 +81,14 @@
     text-align: center;
   }
 
-  .separator:has(.result) {
+  .separator:has(h2) {
     width: 300px;
   }
 
   h2 {
     text-align: center;
     text-transform: uppercase;
-  }
-
-  h2 {
+    white-space: nowrap;
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
@@ -104,5 +102,6 @@
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+    min-width: 215px;
   }
 </style>

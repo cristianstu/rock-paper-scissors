@@ -32,7 +32,7 @@
 </a>
 
 <style>
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
     a {
       --ext-radius: 160px !important;
     }
