@@ -2,7 +2,7 @@
   import { fade } from 'svelte/transition';
 
   import type { Item } from "../models";
-  import ItemIcon from "./item-icon.svelte";
+  import UserSelection from './user-selection.svelte';
 
   export let player1Choice: Item | null = null;
   export let player2Choice: Item | null = null;
@@ -10,14 +10,7 @@
 </script>
 
 <section in:fade={{ duration: 200 }}>
-  <article>
-    <h3>You picked</h3>
-    <div class="item-container">
-      {#if player1Choice}
-        <ItemIcon animate type={player1Choice} selectable={false} size="big" />
-      {/if}
-    </div>
-  </article>
+  <UserSelection title="You picked" playerChoice={player1Choice} />
 
   <div class="separator">
     {#if player1Choice && player2Choice}
@@ -28,16 +21,7 @@
     {/if}
   </div>
 
-  <article>
-    <h3>The house picked</h3>
-    <div class="item-container">
-      {#if player2Choice}
-        <ItemIcon animate type={player2Choice} selectable={false} size="big" />
-      {:else}
-        <div class="placeholder" />
-      {/if}
-    </div>
-  </article>
+  <UserSelection title="The house picked" playerChoice={player2Choice} />
 </section>
 
 <style>
@@ -47,19 +31,6 @@
     justify-content: center;
     gap: 3rem;
     margin-top: 2rem;
-  }
-
-  .item-container {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  article {
-    display: flex;
-    flex-direction: column;
-    min-width: 270px;
   }
 
   .separator {
@@ -79,7 +50,7 @@
     width: 300px;
   }
 
-  h2, h3 {
+  h2 {
     text-align: center;
     text-transform: uppercase;
   }
@@ -87,17 +58,6 @@
   h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-  }
-
-  h3 {
-    margin-bottom: 3rem;
-  }
-
-  .placeholder {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    background: rgb(255 255 255 / 5%);
   }
 
   button {
