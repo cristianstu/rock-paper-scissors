@@ -68,5 +68,6 @@
     letter-spacing: 2px;
     font-weight: bold;
     font-size: 1rem;
+    cursor: pointer;
   }
 </style>
