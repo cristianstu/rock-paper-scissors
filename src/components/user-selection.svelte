@@ -40,8 +40,8 @@
 
   .placeholder {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 265px;
+    height: 265px;
     background: rgb(255 255 255 / 5%);
   }
 </style>

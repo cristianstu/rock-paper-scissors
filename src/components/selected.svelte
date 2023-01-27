@@ -3,6 +3,7 @@
 
   import type { Item } from "../models";
   import UserSelection from './user-selection.svelte';
+  import WaitForOponent from './wait-for-oponent.svelte';
 
   export let player1Choice: Item | null = null;
   export let player2Choice: Item | null = null;
@@ -20,11 +21,14 @@
   <UserSelection title="You picked" playerChoice={player1Choice} />
 
   <div class="separator">
+    <h3>&nbsp;</h3>
     {#if showResult}
       <div class="result" in:fade={{ delay: 300, duration: 200 }}>
         <h2>Result</h2>
         <button on:click={onPlayAgain}>Play again  </button>
       </div>
+    {:else if !showResult && (!player1Choice || !player2Choice)}
+      <WaitForOponent />
     {/if}
   </div>
 
@@ -46,7 +50,7 @@
     align-items: center;
     justify-content: center;
     transition: width 0.25s;
-    width: 0;
+    width: 100px
   }
 
   .separator .result {
