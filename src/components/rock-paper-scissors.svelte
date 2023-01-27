@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Item } from "../models";
+	import type { Item } from "../models";
+	import { getRandomItem } from "../lib/ramdom-item";
 	import Header from "./header.svelte";
 	import Selected from "./selected.svelte";
 	import Selector from "./selector.svelte";
@@ -18,7 +19,7 @@
   const handleSelected = (item: Item) => {
     player1Choice = item;
     setTimeout(() => {
-      player2Choice = Item.SCISSORS;
+      player2Choice = getRandomItem();
     }, 3000);
   };
 
