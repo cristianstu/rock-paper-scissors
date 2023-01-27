@@ -75,12 +75,15 @@
     grid-row: 1 / 3;
     grid-column: 1 / 3;
     z-index: 1;
-    cursor: pointer;
     transition: all .2s ease-in-out;
     width: var(--ext-radius);
     height: var(--ext-radius);
     justify-self: center;
     align-self: center;
+  }
+
+  article.selectable {
+    cursor: pointer;
   }
 
   article.selectable:hover {
