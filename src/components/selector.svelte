@@ -1,14 +1,16 @@
-<script>
+<script lang="ts">
   import bgtriangle from '../images/bg-triangle.svg';
 	import { Item } from '../models';
 	import ItemIcon from './item-icon.svelte';
 
+  export let onSelected: (item: Item) => void;
+
 </script>
 
 <section>
-  <ItemIcon type={Item.PAPER} />
-  <ItemIcon type={Item.SCISSORS} />
-  <ItemIcon type={Item.ROCK} />
+  <ItemIcon on:click={() => onSelected(Item.PAPER)} type={Item.PAPER} />
+  <ItemIcon on:click={() => onSelected(Item.SCISSORS)} type={Item.SCISSORS} />
+  <ItemIcon on:click={() => onSelected(Item.ROCK)} type={Item.ROCK} />
 
   <article class="triangle">
     <img src={bgtriangle} alt="triangle">

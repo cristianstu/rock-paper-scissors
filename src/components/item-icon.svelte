@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Item } from '../models';
+  import { scale } from 'svelte/transition';
+
+  import { Item } from '../models';
   import iconRock from '../images/icon-rock.svg';
   import iconPaper from '../images/icon-paper.svg';
   import iconScissors from '../images/icon-scissors.svg';
@@ -7,6 +9,9 @@
   export let type: Item;
   export let selectable = true;
   export let size: 'medium' | 'big' = 'medium';
+  export let animate = false;
+
+  let icon: string;
 
   const gradientColors = {
     [Item.PAPER]: { bs: 'hsl(230deg 59% 46%)', bg: 'linear-gradient(0deg, hsl(230, 89%, 62%) 0%, hsl(230, 89%, 65%) 100%)' },
@@ -14,18 +19,24 @@
     [Item.SCISSORS]: { bs: 'hsl(39deg 93% 35%)', bg: 'linear-gradient(0deg, hsl(39, 89%, 49%) 0%, hsl(40, 84%, 53%) 100%)' },
   }
 
-  const icon = type === Item.ROCK ? iconRock : type === Item.PAPER ? iconPaper : iconScissors;
+  $: icon = type === Item.ROCK ? iconRock : type === Item.PAPER ? iconPaper : iconScissors;
 
   const extRadius = size === 'big' ? '265px' : '200px';
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
+  on:click
+  transition:scale={{ duration: animate ? 250 : 0 }}
   class={type}
   class:selectable={selectable}
   style="--ext-radius: {extRadius}"
 >
-  <div class="circle-out" style="--bs-color: {gradientColors[type].bs}; --bg-color: {gradientColors[type].bg}">
-    <div class="circle-in">
+  <div
+    class="circle-out"
+    style="--bs-color: {gradientColors[type].bs}; --bg-color: {gradientColors[type].bg}"
+  >
+    <div class="circle-in">"
       <img src={icon} alt={type}>
     </div>
   </div>

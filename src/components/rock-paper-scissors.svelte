@@ -8,18 +8,29 @@
 
   let title = 'Rock Paper Scissors';
   let score = 0;
+  let player1Choice: Item | null = null;
+  let player2Choice: Item | null = null;
 
   if (mode !== 'normal') {
     title += ' Lizard Spock';
   }
+
+  const handleSelected = (item: Item) => {
+    player1Choice = item;
+    setTimeout(() => {
+      player2Choice = Item.SCISSORS;
+    }, 3000);
+  };
 </script>
 
 <main>
   <Header title={title} score={score} />
 
-  <Selector />
-
-  <Selected player1Choice={Item.PAPER} />
+  {#if !player1Choice}
+    <Selector onSelected={handleSelected} />
+  {:else}
+    <Selected {player1Choice} {player2Choice} />
+  {/if}
 </main>
 
 <style>

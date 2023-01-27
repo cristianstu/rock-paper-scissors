@@ -1,17 +1,19 @@
 <script lang="ts">
-	import type { Item } from "../models";
-	import ItemIcon from "./item-icon.svelte";
+  import { fade } from 'svelte/transition';
+
+  import type { Item } from "../models";
+  import ItemIcon from "./item-icon.svelte";
 
   export let player1Choice: Item;
   export let player2Choice: Item | null = null;
 
 </script>
 
-<section>
+<section in:fade={{ duration: 200 }}>
   <article>
     <h2>You picked</h2>
     <div class="item-container">
-      <ItemIcon type={player1Choice} selectable={false} size="big" />
+      <ItemIcon animate type={player1Choice} selectable={false} size="big" />
     </div>
   </article>
 
@@ -23,7 +25,7 @@
     <h2>The house picked</h2>
     <div class="item-container">
       {#if player2Choice}
-        <ItemIcon type={player2Choice} selectable={false} size="big" />
+        <ItemIcon animate type={player2Choice} selectable={false} size="big" />
       {:else}
         <div class="placeholder" />
       {/if}
@@ -48,7 +50,7 @@
   article {
     display: flex;
     flex-direction: column;
-    min-width: 240px;
+    min-width: 270px;
   }
 
   .separator {
