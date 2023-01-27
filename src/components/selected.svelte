@@ -21,8 +21,10 @@
 
   <div class="separator">
     {#if player1Choice && player2Choice}
-      <h2>Result</h2>
-      <button on:click={onPlayAgain}>Play again  </button>
+      <div class="result" in:fade={{ delay: 300, duration: 200 }}>
+        <h2>Result</h2>
+        <button on:click={onPlayAgain}>Play again  </button>
+      </div>
     {/if}
   </div>
 
@@ -60,11 +62,20 @@
   }
 
   .separator {
-    /* min-width: 100px; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: width 0.25s;
+    width: 0;
+  }
+
+  .separator .result {
+    text-align: center;
+  }
+
+  .separator:has(.result) {
+    width: 230px;
   }
 
   h2, h3 {
@@ -74,7 +85,7 @@
 
   h2 {
     font-size: 2.5rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
   }
 
   h3 {
@@ -86,5 +97,15 @@
     width: 200px;
     height: 200px;
     background: rgb(255 255 255 / 5%);
+  }
+
+  button {
+    border: none;
+    padding: 0.75rem 3rem;
+    border-radius: 7px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 1rem;
   }
 </style>
