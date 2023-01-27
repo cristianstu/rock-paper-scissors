@@ -46,6 +46,7 @@
     padding: 1rem;
     justify-content: center;
     gap: 3rem;
+    margin-top: 2rem;
   }
 
   .item-container {
@@ -75,7 +76,7 @@
   }
 
   .separator:has(.result) {
-    width: 230px;
+    width: 300px;
   }
 
   h2, h3 {
