@@ -1,20 +1,15 @@
 <script lang="ts">
   import { scale } from 'svelte/transition';
 
-  import { Item } from '../models';
-  import iconRock from '../images/icon-rock.svg';
-  import iconPaper from '../images/icon-paper.svg';
-  import iconScissors from '../images/icon-scissors.svg';
-  import { itemsColors } from '../config';
+  import type { Item } from '../models';
+  import { images, itemsColors } from '../config';
 
   export let type: Item;
   export let selectable = true;
   export let size: 'medium' | 'big' = 'medium';
   export let animate = false;
 
-  let icon: string;
-
-  $: icon = type === Item.ROCK ? iconRock : type === Item.PAPER ? iconPaper : iconScissors;
+  let icon = images[type];
 
   const extRadius = size === 'big' ? '265px' : '200px';
 </script>

@@ -1,19 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import iconRock from '../images/icon-rock.svg';
-  import iconPaper from '../images/icon-paper.svg';
-  import iconScissors from '../images/icon-scissors.svg';
+
+  import { images } from '../config';
+  import { Item } from '../models';
 
   let slideIndex = 0;
   let wrapper: HTMLElement;
 
   onMount(() => {
-		const interval = setInterval(() => {
+    const interval = setInterval(() => {
       showSlides();
-		}, 250  );
+    }, 250  );
 
-		return () => clearInterval(interval);
-	});
+    return () => clearInterval(interval);
+  });
 
   function showSlides() {
     let i;
@@ -32,15 +32,15 @@
 
 <section bind:this={wrapper}>
   <article>
-    <img src={iconRock} alt="rock">
+    <img src={images[Item.ROCK]} alt="rock">
   </article>
 
   <article>
-    <img src={iconPaper} alt="paper">
+    <img src={images[Item.PAPER]} alt="paper">
   </article>
 
   <article>
-    <img src={iconScissors} alt="scissors">
+    <img src={images[Item.SCISSORS]} alt="scissors">
   </article>
 </section>
 
