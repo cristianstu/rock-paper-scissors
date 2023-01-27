@@ -21,6 +21,11 @@
       player2Choice = Item.SCISSORS;
     }, 3000);
   };
+
+  const playAgain = () => {
+    player1Choice = null;
+    player2Choice = null;
+  };
 </script>
 
 <main>
@@ -29,7 +34,7 @@
   {#if !player1Choice}
     <Selector onSelected={handleSelected} />
   {:else}
-    <Selected {player1Choice} {player2Choice} />
+    <Selected {player1Choice} {player2Choice} onPlayAgain={playAgain} />
   {/if}
 </main>
 
