@@ -25,9 +25,7 @@
     class="circle-out"
     style="--bs-color: {itemsColors[type].boxShadow}; --bg-color: {itemsColors[type].bg}"
   >
-    <div class="circle-in">
-      <img src={icon} alt={type} />
-    </div>
+    <div class="circle-in" style="--bg-image: url({icon})" />
   </div>
 </button>
 
@@ -64,11 +62,10 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 8px 0px 0px rgb(215 213 213) inset;
-  }
-
-  button img {
-    width: 65px;
-    object-fit: contain;
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 55px;
   }
 
   button {
