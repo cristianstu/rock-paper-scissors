@@ -66,6 +66,10 @@
       grid-column: 1 / 3;
       grid-row: 2;
     }
+
+    h3 {
+      margin: 0;
+    }
   }
 
   .separator {

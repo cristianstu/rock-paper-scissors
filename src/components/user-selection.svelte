@@ -31,16 +31,6 @@
     background: rgb(255 255 255 / 5%);
   }
 
-  @media (max-width: 1000px) {
-    article {
-      min-width: 200px;
-    }
-    .placeholder {
-      width: 160px;
-      height: 160px;
-    }
-  }
-
   h3 {
     text-align: center;
     text-transform: uppercase;
@@ -52,5 +42,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1000px) {
+    article {
+      min-width: 200px;
+      flex-flow: column-reverse;
+    }
+    .placeholder {
+      width: 160px;
+      height: 160px;
+    }
+    h3 {
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
   }
 </style>
