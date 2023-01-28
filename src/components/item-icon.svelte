@@ -14,8 +14,7 @@
   const extRadius = size === 'big' ? '265px' : '200px';
 </script>
 
-<a
-  href="/#"
+<button
   on:click|preventDefault
   in:scale={{ duration: animate ? 250 : 0 }}
   class:selectable
@@ -29,17 +28,17 @@
       <img src={icon} alt={type} />
     </div>
   </div>
-</a>
+</button>
 
 <style>
   @media screen and (max-width: 1000px) {
-    a {
+    button {
       --ext-radius: 160px !important;
     }
   }
 
   @media screen and (max-width: 550px) {
-    a {
+    button {
       --ext-radius: 130px !important;
     }
   }
@@ -48,6 +47,7 @@
     display: flex;
     border-radius: 50%;
     width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 10px 0px -1px var(--bs-color);
@@ -65,12 +65,17 @@
     box-shadow: 0px 8px 0px 0px rgb(215 213 213) inset;
   }
 
-  a img {
+  button img {
     width: 65px;
     object-fit: contain;
   }
 
-  a {
+  button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    cursor: pointer;
+    margin: 0;
     place-content: center;
     display: flex;
     grid-row: 1 / 3;
@@ -83,25 +88,25 @@
     align-self: center;
   }
 
-  a:not(.selectable) {
+  button:not(.selectable) {
     cursor: default;
   }
 
-  a.selectable:hover {
+  button.selectable:hover {
     transform: scale(1.1);
   }
 
-  a:nth-child(1) {
+  button:nth-child(1) {
     grid-row: 1 / 3;
     grid-column: 1 / 3;
   }
 
-  a:nth-child(2) {
+  button:nth-child(2) {
     grid-row: 1 / 3;
     grid-column: 3 / 5;
   }
 
-  a:nth-child(3) {
+  button:nth-child(3) {
     grid-row: 3 / 5;
     grid-column: 2 / 4;
   }
