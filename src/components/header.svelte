@@ -29,17 +29,23 @@
     min-width: 700px;
   }
 
-  @media screen and (max-width: 800px) {
-    header {
-      min-width: 100%;
-    }
-  }
-
   header h1 {
     line-height: 1.8rem;
     font-size: 2rem;
     margin: 0;
     padding: 1rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    header {
+      min-width: 100%;
+      padding: 0.5rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      line-height: 1.5rem;
+    }
   }
 
   section {
