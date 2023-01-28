@@ -14,9 +14,7 @@
   <ItemIcon on:click={() => onSelected(Item.SCISSORS)} type={Item.SCISSORS} />
   <ItemIcon on:click={() => onSelected(Item.ROCK)} type={Item.ROCK} />
 
-  <article class="triangle">
-    <img src={bgtriangle} alt="triangle" />
-  </article>
+  <div class="triangle" style="--bg-image: url({bgtriangle})" />
 </section>
 
 <style>
@@ -27,12 +25,27 @@
     grid-template-rows: repeat(4, 1fr);
   }
 
-  article.triangle img {
-    width: 100%;
-  }
-
-  article.triangle {
+  .triangle {
     grid-row: 2 / 4;
     grid-column: 2 / 4;
+
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 313 / 278;
+    width: 313px;
+    background-size: contain;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .triangle {
+      width: 250px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .triangle {
+      width: 220px;
+    }
   }
 </style>
