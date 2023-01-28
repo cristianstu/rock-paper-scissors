@@ -20,6 +20,7 @@
   class:selectable
   style="--ext-radius: {extRadius}"
 >
+  <div class="overlay" />
   <div
     class="circle-out"
     style="--bs-color: {itemsColors[type].boxShadow}; --bg-color: {itemsColors[type].bg}"
@@ -71,6 +72,7 @@
   }
 
   button {
+    position: relative;
     background: none !important;
     border: none;
     padding: 0 !important;
@@ -86,6 +88,16 @@
     height: var(--ext-radius);
     justify-self: center;
     align-self: center;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
   }
 
   button:not(.selectable) {
