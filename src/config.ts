@@ -24,11 +24,11 @@ export const itemsColors = {
     bg: 'linear-gradient(0deg, hsl(39, 89%, 49%) 0%, hsl(40, 84%, 53%) 100%)'
   },
   [Item.LIZARD]: {
-    boxShadow: '',
+    boxShadow: 'hsl(261deg 52% 44%)',
     bg: 'linear-gradient(0deg, hsl(261, 73%, 60%) 0%, hsl(261, 72%, 63%) 100%)'
   },
   [Item.SPOCK]: {
-    boxShadow: '',
+    boxShadow: 'hsl(189deg 57% 36%)',
     bg: 'linear-gradient(0deg, hsl(189, 59%, 53%) 0%, hsl(189, 58%, 57%) 100%)'
   }
 };

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import type { GameMode } from '../config';
 
   import type { Item } from '../models';
   import UserSelection from './user-selection.svelte';
@@ -9,6 +10,7 @@
   export let player2Choice: Item | null = null;
   export let onPlayAgain: () => void;
   export let winner: Item | null = player1Choice;
+  export let mode: GameMode;
 
   let showResult = false;
   $: {
@@ -34,7 +36,7 @@
         {/if}
         <button on:click={onPlayAgain}>Play again </button>
       {:else if !showResult && (!player1Choice || !player2Choice)}
-        <WaitForOponent />
+        <WaitForOponent {mode} />
       {/if}
     </div>
   </div>

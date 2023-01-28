@@ -1,11 +1,15 @@
 <script lang="ts">
+  import { getItems } from '$lib/ramdom-item';
   import { onMount } from 'svelte';
 
-  import { images } from '../config';
-  import { Item } from '../models';
+  import { GameMode, images } from '../config';
+
+  export let mode: GameMode;
 
   let slideIndex = 0;
   let wrapper: HTMLElement;
+
+  let items = getItems(mode);
 
   onMount(() => {
     const interval = setInterval(() => {
@@ -33,17 +37,11 @@
 </script>
 
 <section bind:this={wrapper}>
-  <article>
-    <img src={images[Item.ROCK]} alt="rock" />
-  </article>
-
-  <article>
-    <img src={images[Item.PAPER]} alt="paper" />
-  </article>
-
-  <article>
-    <img src={images[Item.SCISSORS]} alt="scissors" />
-  </article>
+  {#each items as item}
+    <article>
+      <img src={images[item]} alt={item} />
+    </article>
+  {/each}
 </section>
 
 <style>

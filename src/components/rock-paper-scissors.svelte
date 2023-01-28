@@ -4,9 +4,9 @@
   import Header from './header.svelte';
   import ShowSelected from './show-selected.svelte';
   import Selector from './selector.svelte';
-  import { winners } from '../config';
+  import { GameMode, winners } from '../config';
 
-  export let mode = 'normal';
+  export let mode: GameMode = GameMode.CLASSIC;
 
   let title = 'Rock Paper Scissors';
   let score = 0;
@@ -14,14 +14,14 @@
   let player2Choice: Item | null = null;
   let winner: Item | null = null;
 
-  if (mode !== 'normal') {
+  if (mode === GameMode.EXTENDED) {
     title += ' Lizard Spock';
   }
 
   const handleSelected = (item: Item) => {
     player1Choice = item;
     setTimeout(() => {
-      player2Choice = getRandomItem();
+      player2Choice = getRandomItem({ mode });
     }, 3000);
   };
 
@@ -52,10 +52,10 @@
 </script>
 
 <main>
-  <Header {title} {score} />
+  <Header {title} {score} {mode} />
 
   {#if !player1Choice}
-    <Selector onSelected={handleSelected} />
+    <Selector {mode} onSelected={handleSelected} />
   {:else}
     <ShowSelected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
   {/if}

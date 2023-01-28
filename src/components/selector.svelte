@@ -1,20 +1,33 @@
 <script lang="ts">
   import { scale } from 'svelte/transition';
+  import { GameMode } from '../config';
 
-  import bgtriangle from '../images/bg-triangle.svg';
-  import { Item } from '../models';
+  import type { Item } from '../models';
+  import bgTriangle from '../images/bg-triangle.svg';
+  import bgPentagon from '../images/bg-pentagon.svg';
   import ItemIcon from './item-icon.svelte';
+  import { getItems } from '$lib/ramdom-item';
 
   export let onSelected: (item: Item) => void;
   export let animate = true;
+  export let mode: GameMode;
+
+  let items = getItems(mode);
+  let bg = mode === GameMode.EXTENDED ? bgPentagon : bgTriangle;
+  let itemSize: 'small' | 'medium' = mode === GameMode.EXTENDED ? 'small' : 'medium';
 </script>
 
-<section in:scale={{ duration: animate ? 250 : 0 }}>
-  <ItemIcon on:click={() => onSelected(Item.PAPER)} type={Item.PAPER} />
-  <ItemIcon on:click={() => onSelected(Item.SCISSORS)} type={Item.SCISSORS} />
-  <ItemIcon on:click={() => onSelected(Item.ROCK)} type={Item.ROCK} />
+<section class:extended={mode === GameMode.EXTENDED} in:scale={{ duration: animate ? 250 : 0 }}>
+  {#each items as item}
+    <ItemIcon size={itemSize} on:click={() => onSelected(item)} type={item} />
+  {/each}
 
-  <div class="triangle" style="--bg-image: url({bgtriangle})" />
+  <div
+    class="background"
+    class:pentagon={mode === GameMode.EXTENDED}
+    class:triangle={mode === GameMode.CLASSIC}
+    style="--bg-image: url({bg})"
+  />
 </section>
 
 <style>
@@ -25,16 +38,34 @@
     grid-template-rows: repeat(4, 1fr);
   }
 
+  section.extended {
+    grid-template-columns: repeat(3, 1fr) 1rem repeat(3, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+  }
+
+  .background {
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
   .triangle {
     grid-row: 2 / 4;
     grid-column: 2 / 4;
 
-    background-image: var(--bg-image);
-    background-repeat: no-repeat;
-    background-position: center;
     aspect-ratio: 313 / 278;
     width: 313px;
-    background-size: contain;
+  }
+
+  .pentagon {
+    grid-row: 2 / 7;
+    grid-column: 2 / 7;
+    background-position: bottom;
+    aspect-ratio: 329 / 313;
+    width: 360px;
+    align-self: end;
+    justify-self: center;
   }
 
   @media screen and (max-width: 1000px) {

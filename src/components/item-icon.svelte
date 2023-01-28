@@ -6,12 +6,12 @@
 
   export let type: Item;
   export let selectable = true;
-  export let size: 'medium' | 'big' = 'medium';
+  export let size: 'small' | 'medium' | 'big' = 'medium';
   export let animate = false;
 
   let icon = images[type];
 
-  const extRadius = size === 'big' ? '265px' : '200px';
+  let extRadius = size === 'big' ? '265px' : size === 'small' ? '125px' : '200px';
 </script>
 
 <button
@@ -113,13 +113,42 @@
     grid-column: 1 / 3;
   }
 
+  :global(section.extended) button:nth-child(1) {
+    grid-row: 3 / 5;
+    grid-column: 1 / 3;
+  }
+
   button:nth-child(2) {
     grid-row: 1 / 3;
     grid-column: 3 / 5;
   }
 
+  :global(section.extended) button:nth-child(2) {
+    grid-row: 1 / 3;
+    grid-column: 4;
+  }
+
   button:nth-child(3) {
     grid-row: 3 / 5;
     grid-column: 2 / 4;
+  }
+
+  :global(section.extended) button:nth-child(3) {
+    grid-row: 3 / 5;
+    grid-column: 6 / 8;
+  }
+
+  button:nth-child(4) {
+    grid-row: 6 / 8;
+    grid-column: 2 / 4;
+    /* Compense pentagon border */
+    transform: translate(0px, -10px);
+  }
+
+  button:nth-child(5) {
+    grid-row: 6 / 8;
+    grid-column: 5 / 7;
+    /* Compense pentagon border */
+    transform: translate(0px, -10px);
   }
 </style>

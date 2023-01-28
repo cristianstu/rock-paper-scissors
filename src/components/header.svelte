@@ -1,14 +1,21 @@
 <script lang="ts">
+  import { GameMode } from '../config';
+
   export let title = '';
   export let score = 0;
+  export let mode: GameMode;
+
+  let headerfontSize = mode === GameMode.EXTENDED ? '1.5rem' : '2rem';
 </script>
 
 <header>
-  <h1>
-    {#each title.split(' ') as word}
-      <span>{word}</span>
-      <br />
-    {/each}
+  <h1 style="--header-font-size: {headerfontSize}">
+    <a href="/">
+      {#each title.split(' ') as word}
+        <span>{word}</span>
+        <br />
+      {/each}
+    </a>
   </h1>
 
   <section>
@@ -18,6 +25,11 @@
 </header>
 
 <style>
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
   header {
     display: flex;
     justify-content: space-between;
@@ -30,8 +42,8 @@
   }
 
   header h1 {
-    line-height: 1.8rem;
-    font-size: 2rem;
+    line-height: calc(var(--header-font-size) - 0.2rem);
+    font-size: var(--header-font-size);
     margin: 0;
     padding: 1rem;
   }

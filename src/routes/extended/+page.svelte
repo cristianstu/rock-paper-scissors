@@ -3,4 +3,4 @@
   import { GameMode } from '../../config';
 </script>
 
-<RockPaperScissors mode={GameMode.CLASSIC} />
+<RockPaperScissors mode={GameMode.EXTENDED} />
