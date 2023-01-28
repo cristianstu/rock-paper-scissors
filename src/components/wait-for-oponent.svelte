@@ -10,37 +10,39 @@
   onMount(() => {
     const interval = setInterval(() => {
       showSlides();
-    }, 250  );
+    }, 250);
 
     return () => clearInterval(interval);
   });
 
   function showSlides() {
     let i;
-    let slides = wrapper.getElementsByTagName("article") as HTMLCollectionOf<HTMLElement>;
+    let slides = wrapper.getElementsByTagName('article');
     if (slides) {
       for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+        slides[i].style.display = 'none';
       }
       slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
 
-      slides[slideIndex-1].style.display = "block";
+      slides[slideIndex - 1].style.display = 'block';
     }
   }
 </script>
 
 <section bind:this={wrapper}>
   <article>
-    <img src={images[Item.ROCK]} alt="rock">
+    <img src={images[Item.ROCK]} alt="rock" />
   </article>
 
   <article>
-    <img src={images[Item.PAPER]} alt="paper">
+    <img src={images[Item.PAPER]} alt="paper" />
   </article>
 
   <article>
-    <img src={images[Item.SCISSORS]} alt="scissors">
+    <img src={images[Item.SCISSORS]} alt="scissors" />
   </article>
 </section>
 

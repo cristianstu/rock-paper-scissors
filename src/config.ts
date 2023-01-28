@@ -1,4 +1,4 @@
-import { Item } from "./models";
+import { Item } from './models';
 import iconRock from './images/icon-rock.svg';
 import iconPaper from './images/icon-paper.svg';
 import iconScissors from './images/icon-scissors.svg';
@@ -7,7 +7,7 @@ import iconSpock from './images/icon-spock.svg';
 
 export enum GameMode {
   CLASSIC = 'classic',
-  EXTENDED = 'extended',
+  EXTENDED = 'extended'
 }
 
 export const itemsColors = {
@@ -30,21 +30,21 @@ export const itemsColors = {
   [Item.SPOCK]: {
     boxShadow: '',
     bg: 'linear-gradient(0deg, hsl(189, 59%, 53%) 0%, hsl(189, 58%, 57%) 100%)'
-  },
-}
+  }
+};
 
 export const images = {
   [Item.PAPER]: iconPaper,
   [Item.ROCK]: iconRock,
   [Item.SCISSORS]: iconScissors,
   [Item.LIZARD]: iconLizard,
-  [Item.SPOCK]: iconSpock,
-}
+  [Item.SPOCK]: iconSpock
+};
 
 export const winners = {
   [Item.ROCK]: [Item.SCISSORS, Item.LIZARD],
   [Item.PAPER]: [Item.ROCK, Item.SPOCK],
   [Item.SCISSORS]: [Item.PAPER, Item.LIZARD],
   [Item.LIZARD]: [Item.PAPER, Item.SPOCK],
-  [Item.SPOCK]: [Item.ROCK, Item.SCISSORS],
+  [Item.SPOCK]: [Item.ROCK, Item.SCISSORS]
 };

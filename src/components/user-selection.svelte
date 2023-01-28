@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { Item } from "../models";
-	import ItemIcon from "./item-icon.svelte";
-
+  import type { Item } from '../models';
+  import ItemIcon from './item-icon.svelte';
 
   export let playerChoice: Item | null = null;
   export let title: string;

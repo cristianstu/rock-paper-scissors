@@ -3,5 +3,5 @@ export enum Item {
   PAPER = 'paper',
   ROCK = 'rock',
   SPOCK = 'spock',
-  LIZARD = 'lizard',
+  LIZARD = 'lizard'
 }

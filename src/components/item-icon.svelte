@@ -18,7 +18,7 @@
   href="/#"
   on:click|preventDefault
   in:scale={{ duration: animate ? 250 : 0 }}
-  class:selectable={selectable}
+  class:selectable
   style="--ext-radius: {extRadius}"
 >
   <div
@@ -26,7 +26,7 @@
     style="--bs-color: {itemsColors[type].boxShadow}; --bg-color: {itemsColors[type].bg}"
   >
     <div class="circle-in">
-      <img src={icon} alt={type}>
+      <img src={icon} alt={type} />
     </div>
   </div>
 </a>
@@ -70,12 +70,11 @@
     grid-row: 1 / 3;
     grid-column: 1 / 3;
     z-index: 1;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     width: var(--ext-radius);
     height: var(--ext-radius);
     justify-self: center;
     align-self: center;
-
   }
 
   a:not(.selectable) {

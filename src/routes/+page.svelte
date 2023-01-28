@@ -1,3 +1,7 @@
+<nav>
+  <a href="/classic">Classic</a>
+</nav>
+
 <style>
   nav {
     display: flex;
@@ -11,7 +15,3 @@
     font-size: 3rem;
   }
 </style>
-
-<nav>
-  <a href="/classic">Classic</a>
-</nav>

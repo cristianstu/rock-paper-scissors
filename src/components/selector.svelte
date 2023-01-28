@@ -2,12 +2,11 @@
   import { scale } from 'svelte/transition';
 
   import bgtriangle from '../images/bg-triangle.svg';
-	import { Item } from '../models';
-	import ItemIcon from './item-icon.svelte';
+  import { Item } from '../models';
+  import ItemIcon from './item-icon.svelte';
 
   export let onSelected: (item: Item) => void;
   export let animate = true;
-
 </script>
 
 <section in:scale={{ duration: animate ? 250 : 0 }}>
@@ -16,7 +15,7 @@
   <ItemIcon on:click={() => onSelected(Item.ROCK)} type={Item.ROCK} />
 
   <article class="triangle">
-    <img src={bgtriangle} alt="triangle">
+    <img src={bgtriangle} alt="triangle" />
   </article>
 </section>
 

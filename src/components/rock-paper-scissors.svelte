@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Item } from "../models";
-	import { getRandomItem } from "../lib/ramdom-item";
-	import Header from "./header.svelte";
-	import Selected from "./selected.svelte";
-	import Selector from "./selector.svelte";
-	import { winners } from "../config";
+  import type { Item } from '../models';
+  import { getRandomItem } from '../lib/ramdom-item';
+  import Header from './header.svelte';
+  import Selected from './selected.svelte';
+  import Selector from './selector.svelte';
+  import { winners } from '../config';
 
   export let mode = 'normal';
 
@@ -52,7 +52,7 @@
 </script>
 
 <main>
-  <Header title={title} score={score} />
+  <Header {title} {score} />
 
   {#if !player1Choice}
     <Selector onSelected={handleSelected} />

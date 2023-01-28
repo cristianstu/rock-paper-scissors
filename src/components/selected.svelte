@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
 
-  import type { Item } from "../models";
+  import type { Item } from '../models';
   import UserSelection from './user-selection.svelte';
   import WaitForOponent from './wait-for-oponent.svelte';
 
@@ -13,7 +13,7 @@
   let showResult = false;
   $: {
     if (player1Choice && player2Choice) {
-      setTimeout(() => showResult = true, 500);
+      setTimeout(() => (showResult = true), 500);
     }
   }
 </script>
@@ -32,7 +32,7 @@
         {:else}
           <h2>It's a tie!</h2>
         {/if}
-        <button on:click={onPlayAgain}>Play again  </button>
+        <button on:click={onPlayAgain}>Play again </button>
       {:else if !showResult && (!player1Choice || !player2Choice)}
         <WaitForOponent />
       {/if}
@@ -55,7 +55,7 @@
 
   @media (max-width: 1000px) {
     section {
-      grid-template-columns: repeat(2, 1fr);;
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 0;
       padding: 0;
@@ -74,7 +74,7 @@
     align-items: center;
     justify-content: center;
     transition: width 0.25s;
-    width: 100px
+    width: 100px;
   }
 
   .separator .result {

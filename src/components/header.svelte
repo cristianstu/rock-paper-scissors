@@ -1,7 +1,6 @@
 <script lang="ts">
-  export let title = ''
-  export let score = 0
-
+  export let title = '';
+  export let score = 0;
 </script>
 
 <header>
@@ -16,7 +15,6 @@
     <h3>score</h3>
     {score}
   </section>
-
 </header>
 
 <style>
@@ -29,7 +27,6 @@
     text-transform: uppercase;
     border-radius: 15px;
     min-width: 700px;
-
   }
 
   @media screen and (max-width: 800px) {
