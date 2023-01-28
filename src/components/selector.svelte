@@ -79,4 +79,10 @@
       width: 220px;
     }
   }
+
+  @media screen and (max-width: 550px) {
+    .pentagon {
+      width: 260px;
+    }
+  }
 </style>

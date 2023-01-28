@@ -57,7 +57,7 @@
   {#if !player1Choice}
     <Selector {mode} onSelected={handleSelected} />
   {:else}
-    <ShowSelected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
+    <ShowSelected {player1Choice} {player2Choice} {winner} {mode} onPlayAgain={playAgain} />
   {/if}
 </main>
 

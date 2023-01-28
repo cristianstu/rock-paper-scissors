@@ -18,6 +18,7 @@
   on:click|preventDefault
   in:scale={{ duration: animate ? 250 : 0 }}
   class:selectable
+  class:small={size === 'small'}
   style="--ext-radius: {extRadius}"
 >
   <div class="overlay" />
@@ -31,14 +32,20 @@
 
 <style>
   @media screen and (max-width: 1000px) {
-    button {
+    button:not(.small) {
       --ext-radius: 160px !important;
     }
   }
 
   @media screen and (max-width: 550px) {
-    button {
+    button:not(.small) {
       --ext-radius: 130px !important;
+    }
+    button.small {
+      --ext-radius: 100px !important;
+    }
+    button.small .circle-in {
+      background-size: 40px;
     }
   }
 
@@ -113,7 +120,7 @@
     grid-column: 1 / 3;
   }
 
-  :global(section.extended) button:nth-child(1) {
+  button.small:nth-child(1) {
     grid-row: 3 / 5;
     grid-column: 1 / 3;
   }
@@ -123,7 +130,7 @@
     grid-column: 3 / 5;
   }
 
-  :global(section.extended) button:nth-child(2) {
+  button.small:nth-child(2) {
     grid-row: 1 / 3;
     grid-column: 4;
   }
@@ -133,7 +140,7 @@
     grid-column: 2 / 4;
   }
 
-  :global(section.extended) button:nth-child(3) {
+  button.small:nth-child(3) {
     grid-row: 3 / 5;
     grid-column: 6 / 8;
   }
