@@ -97,7 +97,7 @@
     width: 100%;
     height: 100%;
     background: transparent;
-    z-index: 1;
+    z-index: 2;
   }
 
   button:not(.selectable) {
