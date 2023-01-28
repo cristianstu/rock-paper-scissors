@@ -38,6 +38,12 @@
     }
   }
 
+  @media screen and (max-width: 550px) {
+    a {
+      --ext-radius: 130px !important;
+    }
+  }
+
   .circle-out {
     display: flex;
     border-radius: 50%;

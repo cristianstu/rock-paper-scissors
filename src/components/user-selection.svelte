@@ -58,4 +58,11 @@
       margin-bottom: 0;
     }
   }
+
+  @media screen and (max-width: 550px) {
+    .placeholder {
+      width: 130px;
+      height: 130px;
+    }
+  }
 </style>
