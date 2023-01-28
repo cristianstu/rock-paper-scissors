@@ -1,4 +1,6 @@
-# create-svelte
+# Rock Paper scissors
+
+[Frontend Mentor challenge](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH]) using Svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
