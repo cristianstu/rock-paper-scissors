@@ -92,8 +92,11 @@
     cursor: default;
   }
 
-  button.selectable:hover {
+  button.selectable:hover,
+  button.selectable:focus,
+  button.selectable:active {
     transform: scale(1.1);
+    outline: none;
   }
 
   button:nth-child(1) {
