@@ -2,7 +2,7 @@
   import type { Item } from '../models';
   import { getRandomItem } from '../lib/ramdom-item';
   import Header from './header.svelte';
-  import Selected from './selected.svelte';
+  import ShowSelected from './show-selected.svelte';
   import Selector from './selector.svelte';
   import { winners } from '../config';
 
@@ -57,7 +57,7 @@
   {#if !player1Choice}
     <Selector onSelected={handleSelected} />
   {:else}
-    <Selected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
+    <ShowSelected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
   {/if}
 </main>
 
