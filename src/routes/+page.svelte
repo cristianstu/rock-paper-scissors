@@ -18,12 +18,13 @@
   </nav>
 </main>
 
-<style>
+<style lang="scss">
   h1 {
     text-align: center;
     font-size: 4rem;
     margin-bottom: 0;
   }
+
   nav {
     display: flex;
     justify-content: center;
@@ -38,15 +39,6 @@
     height: 100vh;
   }
 
-  a:hover {
-    transform: scale(1.2);
-    color: white;
-  }
-
-  a:hover img {
-    opacity: 1;
-  }
-
   a {
     color: rgb(219 219 219);
     text-decoration: none;
@@ -56,12 +48,21 @@
     align-items: center;
     gap: 3rem;
     transition: all 0.25s;
-  }
 
-  img {
-    height: 300px;
-    opacity: 0.5;
-    transition: all 0.25s;
+    &:hover {
+      transform: scale(1.2);
+      color: white;
+    }
+
+    &:hover img {
+      opacity: 1;
+    }
+
+    img {
+      height: 300px;
+      opacity: 0.5;
+      transition: all 0.25s;
+    }
   }
 
   @media screen and (max-width: 1000px) {

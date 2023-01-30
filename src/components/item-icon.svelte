@@ -30,23 +30,15 @@
   </div>
 </button>
 
-<style>
-  @media screen and (max-width: 1000px) {
-    button:not(.small) {
-      --ext-radius: 160px !important;
-    }
-  }
-
-  @media screen and (max-width: 550px) {
-    button:not(.small) {
-      --ext-radius: 130px !important;
-    }
-    button.small {
-      --ext-radius: 100px !important;
-    }
-    button.small .circle-in {
-      background-size: 40px;
-    }
+<style lang="scss">
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 2;
   }
 
   .circle-out {
@@ -92,82 +84,92 @@
     height: var(--ext-radius);
     justify-self: center;
     align-self: center;
+
+    &:button:not(.selectable) {
+      cursor: default;
+    }
+
+    &.selectable:hover,
+    &.selectable:focus,
+    &.selectable:active {
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    &:nth-child(1) {
+      grid-row: 1 / 3;
+      grid-column: 1 / 3;
+    }
+
+    &.small:nth-child(1) {
+      grid-row: 3 / 5;
+      grid-column: 1 / 3;
+    }
+
+    &:nth-child(2) {
+      grid-row: 1 / 3;
+      grid-column: 3 / 5;
+    }
+
+    &.small:nth-child(2) {
+      grid-row: 1 / 3;
+      grid-column: 4;
+    }
+
+    &:nth-child(3) {
+      grid-row: 3 / 5;
+      grid-column: 2 / 4;
+    }
+
+    &.small:nth-child(3) {
+      grid-row: 3 / 5;
+      grid-column: 6 / 8;
+    }
+
+    &:nth-child(4) {
+      grid-row: 6 / 8;
+      grid-column: 2 / 4;
+    }
+
+    &:nth-child(5) {
+      grid-row: 6 / 8;
+      grid-column: 5 / 7;
+    }
+
+    &:nth-child(4),
+    &:nth-child(5) {
+      /* Compense pentagon border */
+      transform: translate(0px, -10px);
+    }
+
+    &.selectable:nth-child(4):hover,
+    &.selectable:nth-child(4):focus,
+    &.selectable:nth-child(4):active,
+    &.selectable:nth-child(5):hover,
+    &.selectable:nth-child(5):focus,
+    &.selectable:nth-child(5):active {
+      transform: scale(1.1) translate(0px, -10px);
+      outline: none;
+    }
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: 2;
+  @media screen and (max-width: 1000px) {
+    button:not(.small) {
+      --ext-radius: 160px !important;
+    }
   }
 
-  button:not(.selectable) {
-    cursor: default;
-  }
-
-  button.selectable:hover,
-  button.selectable:focus,
-  button.selectable:active {
-    transform: scale(1.1);
-    outline: none;
-  }
-
-  button:nth-child(1) {
-    grid-row: 1 / 3;
-    grid-column: 1 / 3;
-  }
-
-  button.small:nth-child(1) {
-    grid-row: 3 / 5;
-    grid-column: 1 / 3;
-  }
-
-  button:nth-child(2) {
-    grid-row: 1 / 3;
-    grid-column: 3 / 5;
-  }
-
-  button.small:nth-child(2) {
-    grid-row: 1 / 3;
-    grid-column: 4;
-  }
-
-  button:nth-child(3) {
-    grid-row: 3 / 5;
-    grid-column: 2 / 4;
-  }
-
-  button.small:nth-child(3) {
-    grid-row: 3 / 5;
-    grid-column: 6 / 8;
-  }
-
-  button:nth-child(4) {
-    grid-row: 6 / 8;
-    grid-column: 2 / 4;
-  }
-
-  button:nth-child(5) {
-    grid-row: 6 / 8;
-    grid-column: 5 / 7;
-  }
-
-  button:nth-child(4),
-  button:nth-child(5) {
-    /* Compense pentagon border */
-    transform: translate(0px, -10px);
-  }
-
-  button.selectable:nth-child(4):hover,
-  button.selectable:nth-child(4):focus,
-  button.selectable:nth-child(4):active,
-  button.selectable:nth-child(5):hover,
-  button.selectable:nth-child(5):focus,
-  button.selectable:nth-child(5):active {
-    transform: scale(1.1) translate(0px, -10px);
-    outline: none;
+  @media screen and (max-width: 550px) {
+    button {
+      &:not(.small) {
+        --ext-radius: 130px !important;
+      }
+      &.small {
+        --ext-radius: 100px !important;
+      }
+      &.small .circle-in {
+        background-size: 40px;
+      }
+    }
   }
 </style>

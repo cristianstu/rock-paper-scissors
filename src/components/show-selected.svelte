@@ -55,25 +55,6 @@
     margin-top: 2rem;
   }
 
-  @media (max-width: 1000px) {
-    section {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 0;
-      padding: 0;
-      margin-top: 3rem;
-    }
-
-    .separator {
-      grid-column: 1 / 3;
-      grid-row: 2;
-    }
-
-    h3 {
-      margin: 0;
-    }
-  }
-
   .separator {
     display: flex;
     flex-direction: column;
@@ -109,5 +90,24 @@
     font-size: 1rem;
     cursor: pointer;
     min-width: 215px;
+  }
+
+  @media (max-width: 1000px) {
+    section {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+      padding: 0;
+      margin-top: 3rem;
+    }
+
+    .separator {
+      grid-column: 1 / 3;
+      grid-row: 2;
+    }
+
+    h3 {
+      margin: 0;
+    }
   }
 </style>

@@ -24,7 +24,7 @@
   </section>
 </header>
 
-<style>
+<style lang="scss">
   a {
     color: white;
     text-decoration: none;
@@ -39,24 +39,12 @@
     text-transform: uppercase;
     border-radius: 15px;
     min-width: 700px;
-  }
 
-  header h1 {
-    line-height: calc(var(--header-font-size) - 0.2rem);
-    font-size: var(--header-font-size);
-    margin: 0;
-    padding: 1rem;
-  }
-
-  @media screen and (max-width: 800px) {
-    header {
-      min-width: 100%;
-      padding: 0.5rem;
-    }
-
-    header h1 {
-      font-size: 1.75rem;
-      line-height: 1.5rem;
+    h1 {
+      line-height: calc(var(--header-font-size) - 0.2rem);
+      font-size: var(--header-font-size);
+      margin: 0;
+      padding: 1rem;
     }
   }
 
@@ -70,12 +58,24 @@
     border-radius: 10px;
     color: hsl(229, 25%, 31%);
     font-size: 3rem;
+
+    h3 {
+      color: hsl(229, 64%, 46%);
+      font-size: 1rem;
+      margin: 0;
+      padding: 0 2rem;
+    }
   }
 
-  section h3 {
-    color: hsl(229, 64%, 46%);
-    font-size: 1rem;
-    margin: 0;
-    padding: 0 2rem;
+  @media screen and (max-width: 800px) {
+    header {
+      min-width: 100%;
+      padding: 0.5rem;
+
+      h1 {
+        font-size: 1.75rem;
+        line-height: 1.5rem;
+      }
+    }
   }
 </style>
