@@ -60,6 +60,14 @@
   }
 
   @media screen and (max-width: 550px) {
+    article {
+      min-width: 180px;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
     .placeholder {
       width: 130px;
       height: 130px;

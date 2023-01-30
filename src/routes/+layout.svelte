@@ -1,6 +1,11 @@
 <slot />
 
 <style>
+  :global(html),
+  :global(body) {
+    min-height: 100%;
+  }
+
   :global(body) {
     font-size: 16px;
     background: radial-gradient(
@@ -8,7 +13,6 @@
       hsl(214, 47%, 23%) 0%,
       hsl(237, 49%, 15%) 80%
     );
-    min-height: 100vh;
     color: white;
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
