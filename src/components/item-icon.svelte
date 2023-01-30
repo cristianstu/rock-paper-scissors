@@ -148,14 +148,26 @@
   button:nth-child(4) {
     grid-row: 6 / 8;
     grid-column: 2 / 4;
-    /* Compense pentagon border */
-    transform: translate(0px, -10px);
   }
 
   button:nth-child(5) {
     grid-row: 6 / 8;
     grid-column: 5 / 7;
+  }
+
+  button:nth-child(4),
+  button:nth-child(5) {
     /* Compense pentagon border */
     transform: translate(0px, -10px);
+  }
+
+  button.selectable:nth-child(4):hover,
+  button.selectable:nth-child(4):focus,
+  button.selectable:nth-child(4):active,
+  button.selectable:nth-child(5):hover,
+  button.selectable:nth-child(5):focus,
+  button.selectable:nth-child(5):active {
+    transform: scale(1.1) translate(0px, -10px);
+    outline: none;
   }
 </style>
