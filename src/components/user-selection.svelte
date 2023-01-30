@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { Item } from '../models';
   import ItemIcon from './item-icon.svelte';
+  import WinnerEffect from './winner-effect.svelte';
 
   export let playerChoice: Item | null = null;
   export let title: string;
+  export let isWinner = false;
 </script>
 
 <article>
@@ -11,6 +13,9 @@
   <div class="item-container">
     {#if playerChoice}
       <ItemIcon animate type={playerChoice} selectable={false} size="big" />
+      {#if isWinner}
+        <WinnerEffect />
+      {/if}
     {:else}
       <div class="placeholder" />
     {/if}
@@ -42,6 +47,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   @media (max-width: 1000px) {

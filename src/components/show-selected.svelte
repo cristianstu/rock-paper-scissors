@@ -21,7 +21,11 @@
 </script>
 
 <section in:fade={{ duration: 200 }}>
-  <UserSelection title="You picked" playerChoice={player1Choice} />
+  <UserSelection
+    title="You picked"
+    playerChoice={player1Choice}
+    isWinner={showResult && winner === player1Choice}
+  />
 
   <div class="separator">
     <h3>&nbsp;</h3>
@@ -41,7 +45,11 @@
     </div>
   </div>
 
-  <UserSelection title="The house picked" playerChoice={player2Choice} />
+  <UserSelection
+    title="The house picked"
+    playerChoice={player2Choice}
+    isWinner={showResult && winner === player2Choice}
+  />
 </section>
 
 <style>
