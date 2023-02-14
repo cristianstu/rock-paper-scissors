@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import { GameMode } from '../config';
   import { t } from '$lib/i18n';
 
   export let title = '';
   export let score = 0;
-  export let mode: GameMode;
+  const mode = getContext<GameMode>('mode');
 
   let headerfontSize = mode === GameMode.EXTENDED ? '1.5rem' : '2rem';
 </script>

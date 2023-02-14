@@ -1,10 +1,10 @@
 <script lang="ts">
   import { getItems } from '$lib/ramdom-item';
-  import { onMount } from 'svelte';
+  import { getContext, onMount } from 'svelte';
 
   import { GameMode, images } from '../config';
 
-  export let mode: GameMode;
+  const mode = getContext<GameMode>('mode');
 
   let slideIndex = 0;
   let wrapper: HTMLElement;
