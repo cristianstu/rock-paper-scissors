@@ -6,7 +6,11 @@ export enum Locale {
   es = 'es'
 }
 
-export const locale = writable<Locale>(Locale.es);
+const nav = globalThis.navigator || { language: Locale.en };
+const detectedLang = (nav.language || Locale.en).split('-')[0];
+const defaultLang = detectedLang === Locale.es ? Locale.es : Locale.en;
+
+export const locale = writable<Locale>(defaultLang);
 export const locales = Object.keys(translations);
 
 function translate(locale: Locale, key: string, vars: Record<string, string>) {

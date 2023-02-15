@@ -14,11 +14,11 @@ const translations: Record<Locale, Record<string, string>> = {
     'app.you-picked': 'you picked',
     'app.oponent-picked': 'the house picked',
     'app.score': 'score',
-    'app.items.rock': 'rock',
-    'app.items.paper': 'paper',
-    'app.items.scissors': 'scissors',
-    'app.items.lizard': 'lizard',
-    'app.items.spock': 'spock'
+    [`app.items.${Item.ROCK}`]: 'rock',
+    [`app.items.${Item.PAPER}`]: 'paper',
+    [`app.items.${Item.SCISSORS}`]: 'scissors',
+    [`app.items.${Item.LIZARD}`]: 'lizard',
+    [`app.items.${Item.SPOCK}`]: 'spock'
   },
   es: {
     'app.title': 'Piedra Papel Tijera',
