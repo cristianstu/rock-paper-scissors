@@ -1,8 +1,12 @@
 <script>
-  import { locale, Locale } from '$lib/i18n';
+  import { locale, Locale, t } from '$lib/i18n';
 
   function changeLocale() {
     locale.set($locale === Locale.es ? Locale.en : Locale.es);
+  }
+
+  $: if (globalThis.document) {
+    document.title = $t('app.title');
   }
 </script>
 
