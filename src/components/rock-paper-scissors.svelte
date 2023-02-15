@@ -6,8 +6,11 @@
   import Selector from './selector.svelte';
   import { GameMode, winners } from '../config';
   import { t } from '$lib/i18n';
+  import { setContext } from 'svelte';
 
   export let mode: GameMode = GameMode.CLASSIC;
+
+  setContext<GameMode>('mode', mode);
 
   $: title = $t('app.title');
   let score = 0;
@@ -53,12 +56,12 @@
 </script>
 
 <main>
-  <Header {title} {score} {mode} />
+  <Header {title} {score} />
 
   {#if !player1Choice}
-    <Selector {mode} onSelected={handleSelected} />
+    <Selector onSelected={handleSelected} />
   {:else}
-    <ShowSelected {player1Choice} {player2Choice} {winner} {mode} onPlayAgain={playAgain} />
+    <ShowSelected {player1Choice} {player2Choice} {winner} onPlayAgain={playAgain} />
   {/if}
 </main>
 

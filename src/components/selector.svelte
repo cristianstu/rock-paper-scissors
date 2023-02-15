@@ -1,8 +1,9 @@
 <script lang="ts">
   import { scale } from 'svelte/transition';
-  import { GameMode } from '../config';
+  import { getContext } from 'svelte';
 
   import type { Item } from '../models';
+  import { GameMode } from '../config';
   import bgTriangle from '../images/bg-triangle.svg';
   import bgPentagon from '../images/bg-pentagon.svg';
   import ItemIcon from './item-icon.svelte';
@@ -10,7 +11,8 @@
 
   export let onSelected: (item: Item) => void;
   export let animate = true;
-  export let mode: GameMode;
+
+  const mode = getContext<GameMode>('mode');
 
   let items = getItems(mode);
   let bg = mode === GameMode.EXTENDED ? bgPentagon : bgTriangle;
