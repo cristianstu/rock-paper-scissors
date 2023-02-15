@@ -1,19 +1,20 @@
 <script>
   import classicRules from '../images/rules.svg';
   import extendedRules from '../images/rules-extended.svg';
+  import { t } from '$lib/i18n';
 </script>
 
 <main>
-  <h1>Rock Paper Scissors</h1>
+  <h1>{$t('app.title')}</h1>
 
   <nav>
     <a href="/classic">
       <img src={classicRules} alt="Classic Rules" />
-      Classic
+      {$t('app.mode.classic')}
     </a>
     <a href="/extended">
       <img src={extendedRules} alt="Extended Rules" />
-      Extended
+      {$t('app.mode.extended')}
     </a>
   </nav>
 </main>
@@ -42,6 +43,7 @@
   a {
     color: rgb(219 219 219);
     text-decoration: none;
+    text-transform: capitalize;
     font-size: 3rem;
     display: flex;
     flex-direction: column;

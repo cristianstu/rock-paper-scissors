@@ -5,10 +5,11 @@
   import ShowSelected from './show-selected.svelte';
   import Selector from './selector.svelte';
   import { GameMode, winners } from '../config';
+  import { t } from '$lib/i18n';
 
   export let mode: GameMode = GameMode.CLASSIC;
 
-  let title = 'Rock Paper Scissors';
+  $: title = $t('app.title');
   let score = 0;
   let player1Choice: Item | null = null;
   let player2Choice: Item | null = null;

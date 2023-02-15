@@ -5,6 +5,7 @@
   import type { Item } from '../models';
   import UserSelection from './user-selection.svelte';
   import WaitForOponent from './wait-for-oponent.svelte';
+  import { t, locale, Locale } from '$lib/i18n';
 
   export let player1Choice: Item | null = null;
   export let player2Choice: Item | null = null;
@@ -22,7 +23,7 @@
 
 <section in:fade={{ duration: 200 }}>
   <UserSelection
-    title="You picked"
+    title={$t('app.you-picked')}
     playerChoice={player1Choice}
     isWinner={showResult && winner === player1Choice}
   />
@@ -32,13 +33,15 @@
     <div class="result" in:fade={{ delay: 300, duration: 200 }}>
       {#if showResult}
         {#if winner === player1Choice}
-          <h2>You win</h2>
+          <h2>{$t('app.win.message')}</h2>
         {:else if winner === player2Choice}
-          <h2>You lose</h2>
+          <h2>{$t('app.lose.message')}</h2>
         {:else}
-          <h2>It's a tie!</h2>
+          <h2>{$t('app.lose.tie')}</h2>
         {/if}
-        <button on:click={onPlayAgain}>Play again </button>
+        <button on:click={onPlayAgain} style:--min-width={$locale == Locale.en ? '215px' : '265px'}>
+          {$t('app.play-again')}
+        </button>
       {:else if !showResult && (!player1Choice || !player2Choice)}
         <WaitForOponent {mode} />
       {/if}
@@ -46,7 +49,7 @@
   </div>
 
   <UserSelection
-    title="The house picked"
+    title={$t('app.oponent-picked')}
     playerChoice={player2Choice}
     isWinner={showResult && winner === player2Choice}
   />
@@ -97,7 +100,7 @@
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    min-width: 215px;
+    min-width: var(--min-width);
   }
 
   @media (max-width: 1000px) {

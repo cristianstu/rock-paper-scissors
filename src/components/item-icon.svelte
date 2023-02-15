@@ -1,6 +1,7 @@
 <script lang="ts">
   import { scale } from 'svelte/transition';
 
+  import { t } from '$lib/i18n';
   import type { Item } from '../models';
   import { images, itemsColors } from '../config';
 
@@ -20,6 +21,7 @@
   class:selectable
   class:small={size === 'small'}
   style="--ext-radius: {extRadius}"
+  title={$t(`app.items.${type}`)}
 >
   <div class="overlay" />
   <div

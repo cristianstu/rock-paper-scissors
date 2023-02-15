@@ -1,5 +1,6 @@
 <script lang="ts">
   import { GameMode } from '../config';
+  import { t } from '$lib/i18n';
 
   export let title = '';
   export let score = 0;
@@ -19,7 +20,7 @@
   </h1>
 
   <section>
-    <h3>score</h3>
+    <h3>{$t('app.score')}</h3>
     {score}
   </section>
 </header>
@@ -41,7 +42,7 @@
     min-width: 700px;
 
     h1 {
-      line-height: calc(var(--header-font-size) - 0.2rem);
+      line-height: calc(var(--header-font-size) - 0.1rem);
       font-size: var(--header-font-size);
       margin: 0;
       padding: 1rem;
