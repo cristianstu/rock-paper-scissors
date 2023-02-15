@@ -44,7 +44,7 @@
   .lang-selector {
     position: absolute;
     top: 0.5rem;
-    right: 2rem;
+    right: 0.5rem;
     display: flex;
     gap: 1rem;
     padding: 0.5rem;
