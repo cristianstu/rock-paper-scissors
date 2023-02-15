@@ -39,7 +39,10 @@
         {:else}
           <h2>{$t('app.lose.tie')}</h2>
         {/if}
-        <button on:click={onPlayAgain} style:--min-width={$locale == Locale.en ? '215px' : '265px'}>
+        <button
+          on:click={onPlayAgain}
+          style:--min-width={$locale === Locale.en ? '215px' : '265px'}
+        >
           {$t('app.play-again')}
         </button>
       {:else if !showResult && (!player1Choice || !player2Choice)}

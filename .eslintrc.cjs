@@ -16,5 +16,8 @@ module.exports = {
     browser: true,
     es2017: true,
     node: true
+  },
+  globals: {
+    globalThis: false, // means it is not writeable
   }
 };
