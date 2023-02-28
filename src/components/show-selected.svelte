@@ -104,6 +104,8 @@
     font-size: 1rem;
     cursor: pointer;
     min-width: var(--min-width);
+    position: relative;
+    z-index: 1;
   }
 
   @media (max-width: 1000px) {

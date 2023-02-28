@@ -21,7 +21,6 @@
   .circle-1 {
     width: var(--winner-effect-size);
     height: var(--winner-effect-size);
-    z-index: 1;
     position: fixed;
   }
 
