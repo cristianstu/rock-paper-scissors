@@ -29,7 +29,7 @@ const translations: Record<Locale, Record<string, string>> = {
     'app.mode.classic': 'clásico',
     'app.mode.extended': 'extendido',
     'app.you-picked': 'tu elección',
-    'app.oponent-picked': 'la elección de la casa',
+    'app.oponent-picked': 'Oponente',
     'app.score': 'puntos',
     [`app.items.${Item.ROCK}`]: 'piedra',
     [`app.items.${Item.PAPER}`]: 'papel',
