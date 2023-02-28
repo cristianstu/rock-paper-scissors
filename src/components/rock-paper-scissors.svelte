@@ -15,10 +15,6 @@
   let player2Choice: Item | null = null;
   let winner: Item | null = null;
 
-  if (mode === GameMode.EXTENDED) {
-    title += ' Lizard Spock';
-  }
-
   const handleSelected = (item: Item) => {
     player1Choice = item;
     setTimeout(() => {
@@ -36,6 +32,10 @@
       score += amount;
     }, 1000);
   };
+
+  $: if (mode === GameMode.EXTENDED) {
+    title += ' Lizard Spock';
+  }
 
   $: {
     if (player1Choice && player2Choice) {
