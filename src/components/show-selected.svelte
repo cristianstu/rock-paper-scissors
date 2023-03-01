@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import type { GameMode } from '../config';
+  import { confetti } from '@neoconfetti/svelte';
 
+  import type { GameMode } from '../config';
   import type { Item } from '../models';
   import UserSelection from './user-selection.svelte';
   import WaitForOponent from './wait-for-oponent.svelte';
@@ -33,6 +34,7 @@
     <div class="result" in:fade={{ delay: 300, duration: 200 }}>
       {#if showResult}
         {#if winner === player1Choice}
+          <div use:confetti></div>
           <h2>{$t('app.win.message')}</h2>
         {:else if winner === player2Choice}
           <h2>{$t('app.lose.message')}</h2>
@@ -79,7 +81,9 @@
   }
 
   .separator .result {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   .separator:has(h2) {
