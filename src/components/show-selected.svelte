@@ -34,7 +34,7 @@
     <div class="result" in:fade={{ delay: 300, duration: 200 }}>
       {#if showResult}
         {#if winner === player1Choice}
-          <div use:confetti></div>
+          <div class="confetti" use:confetti></div>
           <h2>{$t('app.win.message')}</h2>
         {:else if winner === player2Choice}
           <h2>{$t('app.lose.message')}</h2>
@@ -78,6 +78,10 @@
     justify-content: center;
     transition: width 0.25s;
     width: 100px;
+  }
+
+  .confetti {
+    position: fixed;
   }
 
   .separator .result {
