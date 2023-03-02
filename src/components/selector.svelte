@@ -11,13 +11,18 @@
   export let onSelected: (item: Item) => void;
   export let animate = true;
   export let mode: GameMode;
+  export let disabled = false;
 
   let items = getItems(mode);
   let bg = mode === GameMode.EXTENDED ? bgPentagon : bgTriangle;
   let itemSize: 'small' | 'medium' = mode === GameMode.EXTENDED ? 'small' : 'medium';
 </script>
 
-<section class:extended={mode === GameMode.EXTENDED} in:scale={{ duration: animate ? 250 : 0 }}>
+<section
+  class:extended={mode === GameMode.EXTENDED}
+  class:disabled
+  in:scale={{ duration: animate ? 250 : 0 }}
+>
   {#each items as item}
     <ItemIcon size={itemSize} on:click={() => onSelected(item)} type={item} />
   {/each}
@@ -41,6 +46,22 @@
   section.extended {
     grid-template-columns: repeat(3, 1fr) 1rem repeat(3, 1fr);
     grid-template-rows: repeat(7, 1fr);
+  }
+
+  section.disabled {
+    filter: grayscale(100%);
+  }
+
+  section.disabled::after {
+    content: 'Waiting for oponent...';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    font-size: 2rem;
   }
 
   .background {

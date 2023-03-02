@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Pusher from 'pusher-js';
+  import Pusher, { Channel } from 'pusher-js';
   import { onMount } from 'svelte';
 
   import type { Item } from '../models';
@@ -11,7 +11,6 @@
   import { t } from '$lib/i18n';
 
   export let mode: GameMode = GameMode.CLASSIC;
-  export let remoteOponent = true;
   export let roomCode: string = '';
 
   $: title = $t('app.title');
@@ -20,39 +19,79 @@
   let player2Choice: Item | null = null;
   let winner: Item | null = null;
   let shareUrl = '';
+  let channel: Channel | null = null;
+  let oponentReady = roomCode ? false : true;
+  const id = globalThis.crypto.randomUUID();
 
   onMount(() => {
-    if (remoteOponent && roomCode) {
+    if (roomCode) {
       Pusher.logToConsole = true;
 
       const pusher = new Pusher('9e6d9731bfcb4a5657b3', {
         cluster: 'us2'
       });
 
-      const channel = pusher.subscribe(`room-${roomCode}`);
-      channel.bind('player-choice', function(data: any) {
-        alert(JSON.stringify(data));
+      channel = pusher.subscribe(`room-${roomCode}`);
+      channel.bind('oponent-choice', function({ item, playerId }: any) {
+        if (id !== playerId) {
+          player2Choice = item;
+        }
+      });
+      channel.bind('oponent-joined', function({ playerId, isAck }: any) {
+        if (id !== playerId) {
+          console.log('Oponent ready!!!!');
+          !isAck && !oponentReady && onJoined({ isAck: true });
+          oponentReady = true;
+        }
+      });
+
+      pusher.connection.bind('connected', () => {
+        console.log('connected');
+        onJoined();
       });
 
       return () => {
-        channel.unbind_all();
-        channel.unsubscribe();
+        channel?.unbind_all();
+        channel?.unsubscribe();
       };
     }
 	});
 
   const handleSelected = (item: Item) => {
     player1Choice = item;
-    if (!remoteOponent) {
+
+    if (!roomCode) {
       setTimeout(() => {
         player2Choice = getRandomItem({ mode });
       }, 3000);
+    } else {
+      fetch(`/api/play/${roomCode}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ playerId: id, item })
+      });
     }
   };
+
+  function onJoined({ isAck = false } = {}) {
+    console.log('local playerId: ', id)
+    if (!roomCode) {
+      console.log('onJoined skiped, no room code');
+      return;
+    }
+
+    fetch(`/api/play/${roomCode}/joined`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerId: id, isAck })
+    });
+  }
 
   const playAgain = () => {
     player1Choice = null;
     player2Choice = null;
+    oponentReady = false;
+    onJoined();
   };
 
   const changeScore = (amount: number) => {
@@ -79,7 +118,7 @@
     }
   }
 
-  $: if (globalThis.location && remoteOponent && roomCode) {
+  $: if (globalThis.location && roomCode) {
     shareUrl = `${globalThis.location.protocol}//${globalThis.location.host}/classic/${roomCode}`;
   }
 
@@ -102,7 +141,7 @@
   {/if}
 
   {#if !player1Choice}
-    <Selector {mode} onSelected={handleSelected} />
+    <Selector {mode} disabled={!oponentReady} onSelected={handleSelected} />
   {:else}
     <ShowSelected {player1Choice} {player2Choice} {winner} {mode} onPlayAgain={playAgain} />
   {/if}
