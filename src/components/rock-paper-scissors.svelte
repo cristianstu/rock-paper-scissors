@@ -27,7 +27,7 @@
     if (roomCode) {
       Pusher.logToConsole = true;
 
-      const pusher = new Pusher('9e6d9731bfcb4a5657b3', {
+      const pusher = new Pusher('f0c4c477f8e3fafacafd', {
         cluster: 'us2'
       });
 
