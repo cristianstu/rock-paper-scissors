@@ -29,7 +29,7 @@
     isWinner={showResult && winner === player1Choice}
   />
 
-  <div class="separator">
+  <div class="separator" class:has-result={showResult}>
     <h3>&nbsp;</h3>
     <div class="result" in:fade={{ delay: 300, duration: 200 }}>
       {#if showResult}
@@ -90,7 +90,7 @@
     flex-direction: column;
   }
 
-  .separator:has(h2) {
+  .separator.has-result {
     width: 300px;
   }
 
